@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+   	<h3>PLAYING NUMBER GUESSING GAME COULD BE REAL FUN!</h3>
+
+	<script>
+		let minNum = 1;
+		let maxNum = 100;
+		let attempts = [];
+
+		var answer;
+
+		function isValid(n) {
+			if (minNum < n && n < maxNum) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+
+		while (true) {
+			answer = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+			if (isValid(answer)) {
+				break;
+			}
+		}
+
+		while (true) {
+			let guess = window.prompt(`Type a number that is in the exclusive range ${minNum}\u2013${maxNum}.`);
+			guess = Math.floor(Number(guess));
+
+			if (isNaN(guess) || !isValid(guess)) {
+				window.alert("Please enter a valid number.");
+				continue;
+			}
+
+			attempts.push(guess);
+
+			if (guess < answer) {
+				minNum = guess;
+				window.alert("TOO LOW! Try again.");
+			}
+			else if (guess > answer) {
+				maxNum = guess;
+				window.alert("TOO HIGH! Try again.");
+			}
+			else {
+				window.alert(`CORRECT! The answer is ${answer}.\nIt took you ${attempts.length} attempts: ${attempts}`);
+				break;
+			}
+		}
+	</script>
+
+</body>
+</html>
