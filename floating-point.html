@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-hant-tw">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Representations of Floating-Point Numbers</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: hsl(0, 0%, 95%);
+		}
+
+		h2 {
+			background-color: orange;
+			text-align: center;
+			color: purple;
+			padding: 10px;
+			border-radius: 8px;
+		}
+
+		form {
+			background-color: hsl(0, 80%, 90%);
+			text-align: center;
+			max-width: 350px;
+			margin: auto;
+			padding: 25px;
+			border-radius: 8px;
+			box-shadow: 5px 5px 15px hsla(0, 0%, 0%, 0.3);
+		}
+
+		#textBox {
+			width: 50%;
+			text-align: center;
+			font-family: monospace;
+			font-size: 2em;
+			border: 2px solid hsla(0, 0%, 0%, 0.8);
+			border-radius: 5px;
+			margin-bottom: 15px;
+		}
+
+		label {
+			font-size: 1.25em;
+			font-weight: bold;
+		}
+
+		button {
+			margin-top: 15px;
+			background-color: hsl(0, 100%, 75%);
+			color: white;
+			font-size: 1.5em;
+			border: none;
+			padding: 10px 15px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: hsl(0, 100%, 50%);
+		}
+
+		#result {
+			color: white;
+			background-color: teal;
+			font-family: monospace;
+			font-size: 2em;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<form>
+		<h2>浮點轉換<br>Floating-point Conversion</h2>
+
+		<input type="number" id="textBox" title="Your number?" value="1" accesskey="N"><br>
+
+		<input type="radio" id="to32bits" name="bits" checked>
+		<label for="to32bits">32-bit floating-point representation</label><br>
+
+		<input type="radio" id="to64bits" name="bits">
+		<label for="to64bits">64-bit floating-point representation</label><br>
+
+		<button type="button" onclick="convert()" accesskey="S">submit</button>
+
+		<p id="result"></p>
+	</form>
+
+	<script>
+		function convertToFloat32(num) {
+			const buffer = new ArrayBuffer(4);  // 4 bytes for a 32-bit float
+			const view = new DataView(buffer);
+			view.setFloat32(0, num);  // store the number as a 32-bit float
+			const result = Array.from({ length: 4 }, (_, i) =>
+				view.getUint8(i).toString(16).padStart(2, '0')
+				).join(' ');
+			return result;
+		}
+
+		function convertToFloat64(num) {
+			const buffer = new ArrayBuffer(8);  // 8 bytes for a 64-bit float
+			const view = new DataView(buffer);
+			view.setFloat64(0, num);  // store the number as a 64-bit float
+			const result = Array.from({ length: 8 }, (_, i) =>
+				view.getUint8(i).toString(16).padStart(2, '0')
+				).join(' ');
+			return result;
+		}
+
+		const textBox = document.getElementById("textBox");
+		const to32bits = document.getElementById("to32bits");
+		const to64bits = document.getElementById("to64bits");
+		const result = document.getElementById("result");
+		var temp;
+
+		function convert() {
+			if (to32bits.checked) {  // 32-bit representation
+				temp = Number(textBox.value);
+				result.textContent = convertToFloat32(temp);
+			}
+			else {                   // 64-bit representation
+				temp = Number(textBox.value);
+				result.textContent = convertToFloat64(temp);
+			}
+		}
+	</script>
+</body>
+</html>
