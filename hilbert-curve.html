@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="zh-Hant-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hilbert Curve</title>
+
+	<style>
+		body {
+			text-align: center;
+		}
+
+		#textBox {
+			width: 100px;
+			text-align: center;
+			font-family: monospace;
+			font-size: 1em;
+		}
+
+		#hilbert {
+			border-radius: 3px;
+		}
+	</style>
+
+	<script>
+		function erase() {
+			const canvas = document.getElementById("hilbert");
+			const cxt = canvas.getContext("2d");
+			cxt.clearRect(0, 0, canvas.width, canvas.height);
+			doneList.clear();
+		}
+
+		function hilbert(cxt, x, y, xi, xj, yi, yj, n) {
+			if (n == 0) {
+				const xMid = x + (xi + yi) / 2;
+				const yMid = y + (xj + yj) / 2;
+				cxt.lineTo(xMid, yMid);
+			}
+			else {
+				hilbert(cxt, x, y,
+					yi / 2, yj / 2, xi / 2, xj / 2, n - 1);
+				hilbert(cxt, x + xi / 2, y + xj / 2,
+					xi / 2, xj / 2, yi / 2, yj / 2, n - 1);
+				hilbert(cxt, x + xi / 2 + yi / 2, y + xj / 2 + yj / 2,
+					xi / 2, xj / 2, yi / 2, yj / 2, n - 1);
+				hilbert(cxt, x + xi / 2 + yi, y + xj / 2 + yj,
+					-yi / 2, -yj / 2, -xi / 2, -xj / 2, n - 1);
+			}
+		}
+
+		function isValid(n) {
+			if (0 <= n && n <= 7)
+				return true;
+			else
+				return false;
+		}
+	</script>
+</head>
+
+<body>
+	<form>
+		<h2>希爾柏特曲線塞乎天地之間 (Hilbert Curves Fill Space)</h2>
+		<div>
+			<label>階 (order)&nbsp;
+				<input type="number" id="textBox" title="Your number?"
+				value="5" min="0" max="7" step="1" accesskey="N">
+			</label>
+			&nbsp;&nbsp;<button type="button" onclick="doIt()" accesskey="S">
+				DRAW</button>
+			&nbsp;&nbsp;<button type="button" onclick="erase()" accesskey="K">
+				ERASE</button>
+		</div>
+	</form>
+
+	<p></p>
+	<canvas id="hilbert" width="768" height="768"
+		style="border: 1px solid gray; background-color: pink"></canvas>
+
+	<script>
+		const doneList = new Set();
+
+		function doIt() {
+			// the order of the curve, higher for more detailed
+			const order = Number.parseInt(
+				document.getElementById("textBox").value);
+
+			// checking the validity of the order before doing it
+			if (isNaN(order) || !isValid(order)) {
+				window.alert("Please type a whole number, between 0 and 7,"
+					+ " inclusive.");
+				return;
+			}
+
+			// laying stress on 'whole numbers only'
+			document.getElementById("textBox").value = order;
+
+			// not drawing twice or more
+			if (doneList.has(order)) return;
+
+			const canvas = document.getElementById("hilbert");
+			const cxt = canvas.getContext("2d");
+
+			cxt.beginPath();
+
+			// effectively determining the 'pseudo' grid size
+			const scale = 0.5 ** (order + 1);
+
+			// at the starting point of the curve
+			cxt.moveTo(canvas.width * scale, canvas.height * scale);
+
+			// and starting to do it
+			hilbert(cxt, 0, 0, canvas.width, 0, 0, canvas.height, order);
+
+			cxt.strokeStyle = "blue";
+			cxt.lineWidth = 1;
+			cxt.stroke();
+
+			// done with one order
+			doneList.add(order);
+		};
+
+		doIt();  // initial drawing on the canvas
+	</script>
+</body></html>
