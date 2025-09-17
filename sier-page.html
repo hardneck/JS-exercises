@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="zh-Hant-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sierpiński Triangle</title>
+
+	<style>
+		body {
+			text-align: center;
+		}
+		canvas {
+			padding: 4px;
+			background-color: lightgray;
+		}
+		#result {
+			font-size: 12px;
+			color: white;
+			background-color: steelblue;
+			padding: 2px;
+		}
+	</style>
+
+	<script>
+		function pageOne(elem) {
+			const save = elem.innerHTML;
+			let count = 0;
+			const palette = ['red', 'orange', 'yellow', 'green', 'blue',
+				'indigo', 'violet'];
+			const num = palette.length;
+
+			function f_() {
+				const tmp = count % num;
+				count = count + 1;
+				elem.innerHTML = save + count;
+				return palette[tmp];
+			}
+
+			return f_;
+		}
+
+		function curve(cxt, width, height, px, py, order) {
+			if (order == 0) {
+				cxt.beginPath();
+				cxt.strokeStyle = myDisplay();
+				cxt.moveTo(px, py);
+				cxt.lineTo(px - width / 2, py + height);
+				cxt.lineTo(px + width / 2, py + height);
+				cxt.lineTo(px, py);
+				cxt.stroke();
+			}
+			else {
+				curve(cxt, width / 2, height / 2,
+					px, py, order - 1);
+				curve(cxt, width / 2, height / 2,
+					px - width / 4, py + height / 2, order - 1);
+				curve(cxt, width / 2, height / 2,
+					px + width / 4, py + height / 2, order - 1);
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<p>Sierpiński Triangle of Order 7</p>
+	<canvas id="myCanvas" width="768" height="576"
+		style="border:1px solid #000;">
+	</canvas><br>
+	<p><span id="result">Number of triangles drawn: </span></p>
+
+	<script>
+		const canvas = document.getElementById("myCanvas");
+		const cxt = canvas.getContext("2d");  // 2D rendering context
+		const myDisplay = pageOne(document.getElementById("result"));
+		curve(cxt, canvas.width, canvas.height, canvas.width / 2, 0, 7);
+	</script>
+</body></html>

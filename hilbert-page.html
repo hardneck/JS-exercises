@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-Hant-TW">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hilbert Curves Fill Space</title>
+
+	<script>
+		function hilbertCurve(order) {
+			const colors = ["violet", "indigo", "green", "blue",
+				"orange", "yellow", "red"];
+			const canvas = document.getElementById("myCanvas");
+			const size = canvas.width < canvas.height ?
+				canvas.width : canvas.height;
+			const cxt = canvas.getContext("2d");
+
+			cxt.lineWidth = 2;
+
+			function hilbert(cx, cy, size, order, angle) {
+				cxt.save();
+				cxt.translate(cx, cy);
+				cxt.rotate(angle);
+
+				if (order > 1) {
+					hilbert(-(size / 4), -(size / 4),
+						size / 2, order - 1, 0);
+					hilbert(size / 4, -(size / 4),
+						size / 2, order - 1, 0);
+					hilbert(-(size / 4), size / 4, 
+						size / 2, order - 1, Math.PI / 2);
+					hilbert(size / 4, size / 4,
+						size / 2, order - 1, -(Math.PI / 2));
+				}
+
+				const u = size / Math.pow(2, order + 1);
+				const v = size / 2 - u;
+				cxt.strokeStyle = colors[(order - 1) % colors.length];
+				cxt.beginPath();
+
+				cxt.moveTo(-u, -u);  // top horizontal bar
+				cxt.lineTo(u, -u);
+				cxt.moveTo(-v, -u);  // left vertical bar
+				cxt.lineTo(-v, u);
+				cxt.moveTo(v, -u);  // right vertical bar
+				cxt.lineTo(v, u);
+
+				cxt.stroke();
+				cxt.restore();
+			}
+
+			hilbert(size / 2, size / 2, size, order, 0);
+		}
+	</script>
+</head>
+
+<body>
+	<h3>The Hilbert Space-Filling Curve of Order 7</h3>
+	<canvas id="myCanvas" width="768" height="768"
+		style="border: 1px solid lightgray;"></canvas>
+
+	<script>
+		hilbertCurve(7);
+	</script>
+</body></html>
