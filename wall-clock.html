@@ -73,7 +73,7 @@
 
 				// write minutes
 				cxt.save();
-				cxt.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec);
+				cxt.rotate(min * (Math.PI / 30) + sec * (Math.PI / 1800));
 				cxt.lineWidth = 10;
 				cxt.strokeStyle = "#A9A9A9";  // DarkGray
 				cxt.beginPath();
@@ -84,7 +84,7 @@
 
 				// Write seconds
 				cxt.save();
-				cxt.rotate((sec * Math.PI) / 30);
+				cxt.rotate(sec * (Math.PI / 30));
 				cxt.lineWidth = 6;
 				cxt.strokeStyle = "#D40000";
 				cxt.beginPath();
