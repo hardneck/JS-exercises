@@ -22,8 +22,8 @@
 	</style>
 
 	<script>
-		function pageOne(elem) {
-			const save = elem.innerHTML;
+		function pageOne(el) {
+			const save = el.innerHTML;
 			let count = 0;
 			const palette = ['red', 'orange', 'yellow', 'green', 'blue',
 				'indigo', 'violet'];
@@ -32,14 +32,14 @@
 			function f_() {
 				const tmp = count % num;
 				count = count + 1;
-				elem.innerHTML = save + count;
+				el.innerHTML = save + count;
 				return palette[tmp];
 			}
 
 			return f_;
 		}
 
-		function curve(cxt, width, height, px, py, order) {
+		function curve(width, height, px, py, order) {
 			if (order == 0) {
 				cxt.beginPath();
 				cxt.strokeStyle = myDisplay();
@@ -50,11 +50,11 @@
 				cxt.stroke();
 			}
 			else {
-				curve(cxt, width / 2, height / 2,
+				curve(width / 2, height / 2,
 					px, py, order - 1);
-				curve(cxt, width / 2, height / 2,
+				curve(width / 2, height / 2,
 					px - width / 4, py + height / 2, order - 1);
-				curve(cxt, width / 2, height / 2,
+				curve(width / 2, height / 2,
 					px + width / 4, py + height / 2, order - 1);
 			}
 		}
@@ -64,14 +64,14 @@
 <body>
 	<p>Sierpiński Triangle of Order 7</p>
 	<canvas id="myCanvas" width="768" height="576"
-		style="border:1px solid #000;">
-	</canvas><br>
+		style="border: 1px solid #000;"></canvas>
+	<br>
 	<p><span id="result">Number of triangles drawn: </span></p>
 
 	<script>
 		const canvas = document.getElementById("myCanvas");
 		const cxt = canvas.getContext("2d");  // 2D rendering context
 		const myDisplay = pageOne(document.getElementById("result"));
-		curve(cxt, canvas.width, canvas.height, canvas.width / 2, 0, 7);
+		curve(canvas.width, canvas.height, canvas.width / 2, 0, 7);
 	</script>
 </body></html>
