@@ -41,8 +41,8 @@
 
 		function curve(width, height, px, py, order) {
 			if (order == 0) {
-				cxt.beginPath();
 				cxt.strokeStyle = myDisplay();
+				cxt.beginPath();
 				cxt.moveTo(px, py);
 				cxt.lineTo(px - width / 2, py + height);
 				cxt.lineTo(px + width / 2, py + height);
