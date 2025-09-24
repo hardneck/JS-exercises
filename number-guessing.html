@@ -33,9 +33,9 @@
 
 		while (true) {
 			let guess = window.prompt(`Type a number that is in the exclusive range ${minNum}\u2013${maxNum}.`);
-			guess = Math.floor(Number(guess));
+			guess = Math.floor(Number.parseInt(guess));
 
-			if (isNaN(guess) || !isValid(guess)) {
+			if (Number.isNaN(guess) || !isValid(guess)) {
 				window.alert("Please enter a valid number.");
 				continue;
 			}
@@ -58,4 +58,5 @@
 	</script>
 
 </body>
+
 </html>
