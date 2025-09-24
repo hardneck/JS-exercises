@@ -57,7 +57,7 @@
 				let hr = now.getHours();
 				hr = hr < 12 ? hr : hr - 12;
 
-				// write hours
+				// Write hours
 				cxt.save();
 				cxt.rotate(
 					hr * (Math.PI / 6) + min * (Math.PI / 360) +
@@ -71,7 +71,7 @@
 				cxt.stroke();
 				cxt.restore();
 
-				// write minutes
+				// Write minutes
 				cxt.save();
 				cxt.rotate(min * (Math.PI / 30) + sec * (Math.PI / 1800));
 				cxt.lineWidth = 10;
@@ -104,6 +104,7 @@
 				cxt.restore();
 			}
 
+			// Start the clock
 			init();
 		</script>
 
