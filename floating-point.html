@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Representations of Floating-Point Numbers</title>
+
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -110,17 +111,18 @@
 		const to32bits = document.getElementById("to32bits");
 		const to64bits = document.getElementById("to64bits");
 		const result = document.getElementById("result");
-		var temp;
+		var tmp;
 
 		function convert() {
 			if (to32bits.checked) {  // 32-bit representation
-				temp = Number(textBox.value);
-				result.textContent = convertToFloat32(temp);
+				tmp = Number(textBox.value);
+				result.textContent = convertToFloat32(tmp);
 			}
 			else {                   // 64-bit representation
-				temp = Number(textBox.value);
-				result.textContent = convertToFloat64(temp);
+				tmp = Number(textBox.value);
+				result.textContent = convertToFloat64(tmp);
 			}
 		}
 	</script>
 </body></html>
+
