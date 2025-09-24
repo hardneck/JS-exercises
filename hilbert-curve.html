@@ -103,7 +103,7 @@
 			cxt.beginPath();
 
 			// effectively determining the 'pseudo' grid size
-			const scale = 0.5 ** (order + 1);
+			const scale = Math.pow(0.5, order + 1);
 
 			// at the starting point of the curve
 			cxt.moveTo(canvas.width * scale, canvas.height * scale);
