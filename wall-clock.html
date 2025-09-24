@@ -17,6 +17,7 @@
 			function clock() {
 				const now = new Date();
 				const cxt = document.getElementById("canvas").getContext("2d");
+
 				cxt.save();
 				cxt.clearRect(0, 0, 150, 150);
 				cxt.translate(75, 75);
