@@ -111,17 +111,16 @@
 		const to32bits = document.getElementById("to32bits");
 		const to64bits = document.getElementById("to64bits");
 		const result = document.getElementById("result");
-		var tmp;
 
 		function convert() {
+			const tmp = Number(textBox.value);
 			if (to32bits.checked) {  // 32-bit representation
-				tmp = Number(textBox.value);
 				result.textContent = convertToFloat32(tmp);
 			}
 			else {                   // 64-bit representation
-				tmp = Number(textBox.value);
 				result.textContent = convertToFloat64(tmp);
 			}
 		}
 	</script>
 </body></html>
+
