@@ -16,19 +16,19 @@
 
 			cxt.lineWidth = 2;
 
-			function hilbert(cx, cy, size, order, angle) {
+			function curve(cx, cy, size, order, angle) {
 				cxt.save();
 				cxt.translate(cx, cy);
 				cxt.rotate(angle);
 
 				if (order > 1) {
-					hilbert(-(size / 4), -(size / 4),
+					curve(-(size / 4), -(size / 4),
 						size / 2, order - 1, 0);
-					hilbert(size / 4, -(size / 4),
+					curve(size / 4, -(size / 4),
 						size / 2, order - 1, 0);
-					hilbert(-(size / 4), size / 4, 
+					curve(-(size / 4), size / 4, 
 						size / 2, order - 1, Math.PI / 2);
-					hilbert(size / 4, size / 4,
+					curve(size / 4, size / 4,
 						size / 2, order - 1, -(Math.PI / 2));
 				}
 
@@ -48,7 +48,7 @@
 				cxt.restore();
 			}
 
-			hilbert(size / 2, size / 2, size, order, 0);
+			curve(size / 2, size / 2, size, order, 0);
 		}
 	</script>
 </head>
