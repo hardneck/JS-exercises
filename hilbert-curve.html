@@ -94,9 +94,6 @@
 			// not drawing twice or more
 			if (doneList.has(order)) return;
 
-			const canvas = document.getElementById("hilbert");
-			const cxt = canvas.getContext("2d");
-
 			cxt.beginPath();
 
 			// effectively determining the 'pseudo' grid size
@@ -116,6 +113,11 @@
 			doneList.add(order);
 		};
 
-		drawIt();  // initial drawing on the canvas
+		// setting up the canvas for drawing
+		const canvas = document.getElementById("hilbert");
+		const cxt = canvas.getContext("2d");
+
+		// initial drawing on the canvas
+		drawIt();
 	</script>
 </body></html>
