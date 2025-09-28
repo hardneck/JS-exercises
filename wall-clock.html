@@ -7,7 +7,7 @@
 </head>
 
 <body>
-	<canvas id="canvas" width="150" height="150"></canvas>
+	<canvas id="clock" width="150" height="150"></canvas>
 
 	<script>
 		function init() {
@@ -17,7 +17,7 @@
 
 		function clock() {
 			const now = new Date();
-			const cxt = document.getElementById("canvas").getContext("2d");
+			const cxt = document.getElementById("clock").getContext("2d");
 
 			cxt.save();
 			cxt.clearRect(0, 0, 150, 150);
