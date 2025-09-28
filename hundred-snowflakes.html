@@ -91,9 +91,9 @@
 				return;
 
 			for (const one of snowflakes) {
-				const a = x - one[0];
-				const b = y - one[1];
-				if (Math.sqrt(a * a + b * b) < (s + one[2]) / Math.sqrt(3))
+				const a = one[0] - x;
+				const b = one[1] - y;
+				if (Math.sqrt(a * a + b * b) < (one[2] + s) / Math.sqrt(3))
 					return;
 			}
 
