@@ -9,14 +9,12 @@
 		body {
 			text-align: center;
 		}
-
 		#textBox {
 			width: 100px;
 			text-align: center;
 			font-family: monospace;
 			font-size: 1em;
 		}
-
 		#hilbert {
 			border-radius: 3px;
 		}
@@ -24,26 +22,24 @@
 
 	<script>
 		function erase() {
-			const canvas = document.getElementById("hilbert");
-			const cxt = canvas.getContext("2d");
 			cxt.clearRect(0, 0, canvas.width, canvas.height);
 			doneList.clear();
 		}
 
-		function hilbert(cxt, x, y, xi, xj, yi, yj, n) {
+		function hilbert(x, y, xi, xj, yi, yj, n) {
 			if (n == 0) {
 				const xMid = x + (xi + yi) / 2;
 				const yMid = y + (xj + yj) / 2;
 				cxt.lineTo(xMid, yMid);
 			}
 			else {
-				hilbert(cxt, x, y,
+				hilbert(x, y,
 					yi / 2, yj / 2, xi / 2, xj / 2, n - 1);
-				hilbert(cxt, x + xi / 2, y + xj / 2,
+				hilbert(x + xi / 2, y + xj / 2,
 					xi / 2, xj / 2, yi / 2, yj / 2, n - 1);
-				hilbert(cxt, x + xi / 2 + yi / 2, y + xj / 2 + yj / 2,
+				hilbert(x + xi / 2 + yi / 2, y + xj / 2 + yj / 2,
 					xi / 2, xj / 2, yi / 2, yj / 2, n - 1);
-				hilbert(cxt, x + xi / 2 + yi, y + xj / 2 + yj,
+				hilbert(x + xi / 2 + yi, y + xj / 2 + yj,
 					-yi / 2, -yj / 2, -xi / 2, -xj / 2, n - 1);
 			}
 		}
@@ -65,7 +61,7 @@
 				<input type="number" id="textBox" title="Your number?"
 				value="5" min="0" max="7" step="1" accesskey="N">
 			</label>
-			&nbsp;&nbsp;<button type="button" onclick="doIt()" accesskey="S">
+			&nbsp;&nbsp;<button type="button" onclick="drawIt()" accesskey="S">
 				DRAW</button>
 			&nbsp;&nbsp;<button type="button" onclick="erase()" accesskey="K">
 				ERASE</button>
@@ -80,7 +76,7 @@
 	<script>
 		const doneList = new Set();
 
-		function doIt() {
+		function drawIt() {
 			// the order of the curve, higher for more detailed
 			const order = Number.parseInt(
 				document.getElementById("textBox").value);
@@ -110,7 +106,7 @@
 			cxt.moveTo(canvas.width * scale, canvas.height * scale);
 
 			// and starting to do it
-			hilbert(cxt, 0, 0, canvas.width, 0, 0, canvas.height, order);
+			hilbert(0, 0, canvas.width, 0, 0, canvas.height, order);
 
 			cxt.strokeStyle = "blue";
 			cxt.lineWidth = 1;
@@ -120,6 +116,6 @@
 			doneList.add(order);
 		};
 
-		doIt();  // initial drawing on the canvas
+		drawIt();  // initial drawing on the canvas
 	</script>
 </body></html>
