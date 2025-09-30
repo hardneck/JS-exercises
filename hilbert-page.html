@@ -14,8 +14,8 @@
 				canvas.width : canvas.height;
 			const cxt = canvas.getContext("2d");
 
-			cxt.lineWidth = 3;
 			cxt.lineCap = "round";
+			cxt.lineWidth = 3;
 
 			function curve(cx, cy, size, order, angle) {
 				cxt.save();
