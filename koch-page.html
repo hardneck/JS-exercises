@@ -7,10 +7,6 @@
 
 	<script>
 		function curve(px, py, size, order, color) {
-			cxt.lineWidth = 1;
-			cxt.strokeStyle = color;
-
-			cxt.beginPath();
 
 			function f_(x0, y0, size, order, angle) {
 				cxt.save();
@@ -35,7 +31,10 @@
 				cxt.restore();
 			}
 
+			cxt.beginPath();
 			f_(px, py, size, order, 0);
+			cxt.lineWidth = 1;
+			cxt.strokeStyle = color;
 			cxt.stroke();
 
 			cxt.font = "12px monospace";
