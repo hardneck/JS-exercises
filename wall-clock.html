@@ -26,7 +26,7 @@
 			cxt.rotate(-(Math.PI / 2));
 			cxt.lineCap = "round";
 
-			// Hour marks
+			// hour marks
 			cxt.save();
 			cxt.lineWidth = 8;
 			cxt.strokeStyle = "indigo";
@@ -39,7 +39,7 @@
 			}
 			cxt.restore();
 
-			// Minute marks
+			// minute marks
 			cxt.save();
 			cxt.lineWidth = 4;
 			cxt.strokeStyle = "black";
@@ -60,7 +60,7 @@
 
 			hr = hr < 12 ? hr : hr - 12;
 
-			// Write hours
+			// write hours
 			cxt.save();
 			cxt.rotate(
 				hr * (Math.PI / 6) + min * (Math.PI / 360) +
@@ -74,7 +74,7 @@
 			cxt.stroke();
 			cxt.restore();
 
-			// Write minutes
+			// write minutes
 			cxt.save();
 			cxt.rotate(min * (Math.PI / 30) + sec * (Math.PI / 1800));
 			cxt.lineWidth = 10;
@@ -85,7 +85,7 @@
 			cxt.stroke();
 			cxt.restore();
 
-			// Write seconds
+			// write seconds
 			cxt.save();
 			cxt.rotate(sec * (Math.PI / 30));
 			cxt.lineWidth = 5;
@@ -97,11 +97,11 @@
 			cxt.stroke()
 			cxt.beginPath();
 			cxt.arc(0, 0, 2, 0, Math.PI * 2, true);
-			cxt.fillStyle = "#420e59";
+			cxt.fillStyle = "#420E59";
 			cxt.fill()
 			cxt.restore();
 
-			// Clock frame
+			// clock frame
 			cxt.lineWidth = 14;
 			cxt.strokeStyle = "#325FA2";
 			cxt.beginPath();
@@ -111,7 +111,7 @@
 			cxt.restore();
 		}
 
-		// Start the clock
+		// start the clock
 		init();
 	</script>
 </body></html>
