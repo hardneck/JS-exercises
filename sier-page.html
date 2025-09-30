@@ -30,10 +30,10 @@
 			const num = palette.length;
 
 			function f_() {
-				const tmp = count % num;
+				const i = count % num;
 				count = count + 1;
 				el.innerHTML = save + count;
-				return palette[tmp];
+				return palette[i];
 			}
 
 			return f_;
@@ -62,15 +62,18 @@
 </head>
 
 <body>
-	<p>Sierpiński Triangle of Order 7</p>
+	<p>Sierpiński Triangle of Order 6</p>
 	<canvas id="myCanvas" width="768" height="576"
-		style="border: 1px solid #000;"></canvas>
+		style="border: 1px solid #666;"></canvas>
 	<p><span id="result">Number of triangles drawn: </span></p>
 
 	<script>
 		const canvas = document.getElementById("myCanvas");
 		const cxt = canvas.getContext("2d");  // 2D rendering context
 		const myDisplay = pageOne(document.getElementById("result"));
-		curve(canvas.width, canvas.height, canvas.width / 2, 0, 7);
+
+		cxt.lineCap = "round";
+		cxt.lineWidth = 3;
+		curve(canvas.width, canvas.height, canvas.width / 2, 0, 6);
 	</script>
 </body></html>
