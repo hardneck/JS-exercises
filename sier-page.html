@@ -63,7 +63,7 @@
 
 <body>
 	<p>Sierpiński Triangle of Order 6</p>
-	<canvas id="myCanvas" width="768" height="576"
+	<canvas id="myCanvas" width="776" height="584"
 		style="border: 1px solid #666;"></canvas>
 	<p><span id="result">Number of triangles drawn: </span></p>
 
@@ -74,6 +74,6 @@
 
 		cxt.lineCap = "round";
 		cxt.lineWidth = 3;
-		curve(canvas.width, canvas.height, canvas.width / 2, 0, 6);
+		curve(canvas.width - 4, canvas.height - 4, (canvas.width - 4) / 2, 4, 6);
 	</script>
 </body></html>
