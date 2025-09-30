@@ -81,22 +81,22 @@
 			const order = Number.parseInt(
 				document.getElementById("textBox").value);
 
-			// checking the validity of the order before doing it
+			// check the validity of the order before doing it
 			if (Number.isNaN(order) || !isValid(order)) {
 				window.alert("It must be a whole number, between 0 and 7," +
 					" inclusive.");
 				return;
 			}
 
-			// laying stress on 'whole numbers only'
+			// lay stress on 'whole numbers only'
 			document.getElementById("textBox").value = order;
 
-			// not drawing twice or more
+			// no drawing twice or more
 			if (doneList.has(order)) return;
 
 			cxt.beginPath();
 
-			// effectively determining the 'pseudo' grid size
+			// determine the 'pseudo' grid size
 			const scale = Math.pow(0.5, order + 1);
 
 			// at the starting point of the curve
@@ -113,7 +113,7 @@
 			doneList.add(order);
 		};
 
-		// setting up the canvas for drawing
+		// set up the canvas for drawing
 		const canvas = document.getElementById("hilbert");
 		const cxt = canvas.getContext("2d");
 
