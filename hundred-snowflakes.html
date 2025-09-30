@@ -27,7 +27,7 @@
 				cxt.rotate(angle);
 
 				if (order == 0) {
-					cxt.moveTo(0, 0);
+					// cxt.moveTo(0, 0);
 					cxt.lineTo(size, 0);
 				}
 				else {
@@ -55,6 +55,9 @@
 
 			const x1 = -(size / 2);
 			const y1 = -((size / 3) * Math.sin(Math.PI / 3));
+
+			// get ready at the starting point
+			cxt.moveTo(x1, y1);
 
 			kochCurve(x1, y1, size, order);
 			cxt.rotate(2 * (Math.PI / 3));
