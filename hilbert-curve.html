@@ -105,8 +105,9 @@
 			// and start to draw it
 			hilbert(0, 0, canvas.width, 0, 0, canvas.height, order);
 
-			cxt.strokeStyle = "blue";
+			cxt.lineCap = "round";
 			cxt.lineWidth = 1;
+			cxt.strokeStyle = "blue";
 			cxt.stroke();
 
 			// done with one order
@@ -117,7 +118,7 @@
 		const canvas = document.getElementById("hilbert");
 		const cxt = canvas.getContext("2d");
 
-		// the initial drawing on the canvas
+		// do the initial drawing on the canvas
 		drawIt();
 	</script>
 </body></html>
