@@ -20,7 +20,6 @@
 				if (order == 0) {
 					cxt.moveTo(0, 0);
 					cxt.lineTo(size, 0);
-					cxt.stroke();
 				}
 				else {
 					f_(0, 0,
@@ -37,6 +36,7 @@
 			}
 
 			f_(px, py, size, order, 0);
+			cxt.stroke();
 
 			cxt.font = "12px monospace";
 			cxt.textAlign = "center";  // horizontal alignment
