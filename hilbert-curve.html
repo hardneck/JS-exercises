@@ -99,10 +99,10 @@
 			// determine the 'pseudo' grid size
 			const scale = Math.pow(0.5, order + 1);
 
-			// get at the starting point of the curve
+			// get ready at the starting point of the curve
 			cxt.moveTo(canvas.width * scale, canvas.height * scale);
 
-			// and ready to draw it
+			// and start to draw it
 			hilbert(0, 0, canvas.width, 0, 0, canvas.height, order);
 
 			cxt.strokeStyle = "blue";
