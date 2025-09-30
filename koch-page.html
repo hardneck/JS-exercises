@@ -31,11 +31,7 @@
 				cxt.restore();
 			}
 
-			cxt.beginPath();
 			f_(px, py, size, order, 0);
-			cxt.lineWidth = 1;
-			cxt.strokeStyle = color;
-			cxt.stroke();
 
 			cxt.font = "12px monospace";
 			cxt.textAlign = "center";  // horizontal alignment
@@ -46,6 +42,7 @@
 		function drawIt(x0, y0, size, order, color) {
 			cxt.save();
 			cxt.translate(x0, y0);
+			cxt.beginPath();
 
 			const x1 = -(size / 2);
 			const y1 = -((size / 3) * Math.sin(Math.PI / 3));
@@ -56,6 +53,9 @@
 			cxt.rotate(2 * (Math.PI / 3));
 			curve(x1, y1, size, order, color);
 
+			cxt.lineWidth = 1;
+			cxt.strokeStyle = color;
+			cxt.stroke();
 			cxt.restore();
 		}
 	</script>
