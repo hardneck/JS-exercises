@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-Hant-TW">
+<!DOCTYPE html><html lang="zh-hant-tw">
 
 <head>
 	<meta charset="UTF-8">
@@ -32,10 +32,10 @@
 						size / 2, order - 1, -(Math.PI / 2));
 				}
 
+				cxt.beginPath();
+
 				const u = size / Math.pow(2, order + 1);
 				const v = size / 2 - u;
-				cxt.strokeStyle = colors[(order - 1) % colors.length];
-				cxt.beginPath();
 
 				cxt.moveTo(-u, -u);  // top horizontal bar
 				cxt.lineTo(u, -u);
@@ -44,6 +44,7 @@
 				cxt.moveTo(v, -u);  // right vertical bar
 				cxt.lineTo(v, u);
 
+				cxt.strokeStyle = colors[(order - 1) % colors.length];
 				cxt.stroke();
 				cxt.restore();
 			}
