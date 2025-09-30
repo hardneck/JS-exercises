@@ -14,7 +14,8 @@
 				canvas.width : canvas.height;
 			const cxt = canvas.getContext("2d");
 
-			cxt.lineWidth = 2;
+			cxt.lineWidth = 3;
+			cxt.lineCap = "round";
 
 			function curve(cx, cy, size, order, angle) {
 				cxt.save();
@@ -44,7 +45,7 @@
 				cxt.moveTo(v, -u);  // right vertical bar
 				cxt.lineTo(v, u);
 
-				cxt.strokeStyle = colors[(order - 1) % colors.length];
+				cxt.strokeStyle = colors[order % colors.length];
 				cxt.stroke();
 				cxt.restore();
 			}
@@ -62,6 +63,6 @@
 	</canvas>
 
 	<script>
-		hilbertCurve(7);
+		hilbertCurve(6);
 	</script>
 </body></html>
