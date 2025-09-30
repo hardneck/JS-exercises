@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-Hant-TW">
+<!doctype html><html lang="zh-hant-tw">
 
 <head>
 	<meta charset="UTF-8">
@@ -41,12 +41,12 @@
 
 		function curve(width, height, px, py, order) {
 			if (order == 0) {
-				cxt.strokeStyle = myDisplay();
 				cxt.beginPath();
 				cxt.moveTo(px, py);
 				cxt.lineTo(px - width / 2, py + height);
 				cxt.lineTo(px + width / 2, py + height);
 				cxt.lineTo(px, py);
+				cxt.strokeStyle = myDisplay();
 				cxt.stroke();
 			}
 			else {
