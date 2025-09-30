@@ -20,7 +20,6 @@
 		}
 
 		function kochCurve(px, py, size, order) {
-			cxt.beginPath();
 
 			function curve(x0, y0, size, order, angle) {
 				cxt.save();
@@ -30,8 +29,6 @@
 				if (order == 0) {
 					cxt.moveTo(0, 0);
 					cxt.lineTo(size, 0);
-					cxt.strokeStyle = kochColor();
-					cxt.stroke();
 				}
 				else {
 					curve(0, 0,
@@ -54,6 +51,7 @@
 			cxt.save();
 			cxt.translate(x0, y0);
 			cxt.rotate(angle);
+			cxt.beginPath();
 
 			const x1 = -(size / 2);
 			const y1 = -((size / 3) * Math.sin(Math.PI / 3));
@@ -64,6 +62,8 @@
 			cxt.rotate(2 * (Math.PI / 3));
 			kochCurve(x1, y1, size, order);
 
+			cxt.strokeStyle = kochColor();
+			cxt.stroke();
 			cxt.restore();
 
 			cxt.font = "8px monospace";
