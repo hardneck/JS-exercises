@@ -8,6 +8,7 @@
 	<style>
 		body {
 			text-align: center;
+			font-family: serif;
 		}
 		canvas {
 			padding: 4px;
@@ -22,17 +23,17 @@
 	</style>
 
 	<script>
-		function pageOne(el) {
-			const save = el.innerHTML;
+		function pageOne() {
+			const save = result.innerHTML;
 			let count = 0;
-			const palette = ['red', 'orange', 'yellow', 'green', 'blue',
-				'indigo', 'violet'];
-			const num = palette.length;
+			const palette = ["red", "orange", "yellow", "green", "blue",
+				"indigo", "violet"];
+			const length = palette.length;
 
 			function f_() {
-				const i = count % num;
+				const i = count % length;
 				count = count + 1;
-				el.innerHTML = save + count;
+				result.innerHTML = save + count;
 				return palette[i];
 			}
 
@@ -64,13 +65,14 @@
 <body>
 	<p>Sierpiński Triangle of Order 6</p>
 	<canvas id="myCanvas" width="776" height="584"
-		style="border: 1px solid #666;"></canvas>
-	<p><span id="result">Number of triangles drawn: </span></p>
+		style="border: 1px solid #666; border-radius: 2px;"></canvas>
+	<p><span id="result">Number of drawn triangles: </span></p>
 
 	<script>
 		const canvas = document.getElementById("myCanvas");
 		const cxt = canvas.getContext("2d");  // 2D rendering context
-		const myDisplay = pageOne(document.getElementById("result"));
+		const result = document.getElementById("result");
+		const myDisplay = pageOne();
 
 		cxt.lineCap = "round";
 		cxt.lineWidth = 3;
