@@ -57,9 +57,9 @@
 	<script>
 		const canvas = document.getElementById("myCanvas");
 		const cxt = canvas.getContext("2d");  // 2D rendering context
+		let count = 0;
 
 		const myDisplay = (function () {
-			let count = 0;
 			const palette = ["red", "orange", "yellow", "green", "blue",
 				"indigo", "violet"];
 			const length = palette.length;
