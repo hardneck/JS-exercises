@@ -10,10 +10,12 @@
 			text-align: center;
 			font-family: serif;
 		}
-		canvas {
-			padding: 4px;
+
+		#myCanvas {
+			padding: 14px;
 			background-color: lightgray;
 		}
+
 		#result {
 			font-size: 14px;
 			color: white;
@@ -24,23 +26,6 @@
 	</style>
 
 	<script>
-		function pageOne() {
-			const save = result.innerHTML;
-			let count = 0;
-			const palette = ["red", "orange", "yellow", "green", "blue",
-				"indigo", "violet"];
-			const length = palette.length;
-
-			function f_() {
-				const i = count % length;
-				count = count + 1;
-				result.innerHTML = save + count;
-				return palette[i];
-			}
-
-			return f_;
-		}
-
 		function curve(width, height, px, py, order) {
 			if (order == 0) {
 				cxt.beginPath();
@@ -72,13 +57,28 @@
 	<script>
 		const canvas = document.getElementById("myCanvas");
 		const cxt = canvas.getContext("2d");  // 2D rendering context
-		const result = document.getElementById("result");
-		const myDisplay = pageOne();
+
+		const myDisplay = (function () {
+			let count = 0;
+			const palette = ["red", "orange", "yellow", "green", "blue",
+				"indigo", "violet"];
+			const length = palette.length;
+
+			return function () {
+				const i = count % length;
+				count = count + 1;
+				return palette[i];
+			};
+		})();
 
 		cxt.lineCap = "round";
 		cxt.lineWidth = 3;
 		cxt.translate(4, 4);
+
 		curve(canvas.width - 8, canvas.height - 8,
 			(canvas.width - 8) / 2, 0, 6);
+
+		const result = document.getElementById("result");
+		result.innerHTML = result.innerHTML + count;
 	</script>
 </body></html>
