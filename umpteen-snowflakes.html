@@ -146,20 +146,20 @@
 		drawIt();
 
 		let interval = setInterval(drawIt, 100);
-		let funcState = false;
-		const func = document.getElementById("func");
+		let funcExec = true;  // the state of function execution
+		const funcButton = document.getElementById("func");
 
 		func.addEventListener("click", () => {
+			funcExec = !funcExec;  // mimic the on/off effect
 			if (funcState) {
 				interval = setInterval(drawIt, 100);
-				func.innerHTML = "Pause";
+				funcButton.innerHTML = "Pause";
 			}
 			else {
 				clearInterval(interval);
-				func.innerHTML = "Resume";
+				funcButton.innerHTML = "Resume";
 				notify();
 			}
-			funcState = !funcState;
 		}, true);
 	</script>
 </body></html>
