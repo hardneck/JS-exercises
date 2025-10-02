@@ -113,11 +113,13 @@
 
 <body>
    	<h3>Snowflake, snowflake everywhere, ... counting endlessly</h3>
+
 	<canvas id="koch" width="800" height="600"
 		style="border: 1px solid lightgray; border-radius: 2px;">
 		This canvas could be as large as your imagination.
 	</canvas>
-	<p id="result">You're getting snowflakes.</p>
+
+	<div id="result">You're getting snowflakes.</div>
 	<button id="func">Click Me</button>
 
 	<script>
@@ -139,8 +141,8 @@
 		// get it started
 		drawIt();
 
-		let myState = false;
 		let myInterval = setInterval(drawIt, 100);
+		let myState = false;
 		const myButton = document.getElementById("func");
 
 		myButton.addEventListener("click", () => {
@@ -154,6 +156,6 @@
 				notify();
 			}
 			myState = !myState;
-		});
+		}, true);
 	</script>
 </body></html>
