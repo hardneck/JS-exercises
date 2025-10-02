@@ -145,17 +145,17 @@
 		// get it started
 		drawIt();
 
-		let intv = setInterval(drawIt, 100);
+		let interval = setInterval(drawIt, 100);
 		let funcState = false;
 		const func = document.getElementById("func");
 
 		func.addEventListener("click", () => {
 			if (funcState) {
-				intv = setInterval(drawIt, 100);
+				interval = setInterval(drawIt, 100);
 				func.innerHTML = "Pause";
 			}
 			else {
-				clearInterval(intv);
+				clearInterval(interval);
 				func.innerHTML = "Resume";
 				notify();
 			}
