@@ -16,7 +16,7 @@
 		}
 
 		#func {
-			width: 80px;
+			width: 100px;
 			font-family: sans-serif;
 		}
 
@@ -151,7 +151,7 @@
 
 		func.addEventListener("click", () => {
 			funcExec = !funcExec;  // mimic the on/off effect
-			if (funcState) {
+			if (funcExec) {
 				interval = setInterval(drawIt, 100);
 				funcButton.innerHTML = "Pause";
 			}
