@@ -105,7 +105,7 @@
 			kochDraw(x, y, s, n, (Math.random() - 0.5) * Math.PI);
 
 			if (snowflakes.length == 100) {
-				clearInterval(myInterval);
+				clearInterval(interval);
 				result.innerHTML = "Attempt count: " + String(count) +
 					"&nbsp;&nbsp;&nbsp;" + "Number of drawn snowflakes: " +
 					String(snowflakes.length);
@@ -138,6 +138,6 @@
 
 		// start once and at timed intervals
 		drawIt();
-		const myInterval = setInterval(drawIt, 100);
+		const interval = setInterval(drawIt, 100);
 	</script>
 </body></html>
