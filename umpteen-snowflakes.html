@@ -138,7 +138,7 @@
 
 		function notify() {
 			result.innerHTML = "Attempt count: " + String(count) +
-			", Number of drawn snowflakes: " +
+			"&quad;Number of drawn snowflakes: " +
 			String(snowflakes.length);
 		}
 
@@ -156,7 +156,7 @@
 			}
 			else {
 				clearInterval(intv);
-				func.innerHTML = "Run";
+				func.innerHTML = "Resume";
 				notify();
 			}
 			funcState = !funcState;
