@@ -17,6 +17,7 @@
 
 		#func {
 			width: 80px;
+			font-family: sans-serif;
 		}
 
 		#func:hover {
@@ -119,7 +120,7 @@
 		This canvas could be as large as your imagination.
 	</canvas>
 
-	<div id="result">You're getting snowflakes.</div>
+	<p id="result">You're getting snowflakes.</p>
 	<button id="func">Click Me</button>
 
 	<script>
@@ -141,21 +142,21 @@
 		// get it started
 		drawIt();
 
-		let myInterval = setInterval(drawIt, 100);
-		let myState = false;
-		const myButton = document.getElementById("func");
+		let intv = setInterval(drawIt, 100);
+		let funcState = false;
+		const func = document.getElementById("func");
 
-		myButton.addEventListener("click", () => {
-			if (myState) {
-				myInterval = setInterval(drawIt, 100);
-				myButton.innerHTML = "Pause";
+		func.addEventListener("click", () => {
+			if (funcState) {
+				intv = setInterval(drawIt, 100);
+				func.innerHTML = "Pause";
 			}
 			else {
-				clearInterval(myInterval);
-				myButton.innerHTML = "Run";
+				clearInterval(intv);
+				func.innerHTML = "Run";
 				notify();
 			}
-			myState = !myState;
+			funcState = !funcState;
 		}, true);
 	</script>
 </body></html>
