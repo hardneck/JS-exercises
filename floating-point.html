@@ -73,15 +73,16 @@
 	<form>
 		<h2>浮點轉換<br>Floating-point Conversion</h2>
 
-		<input type="number" id="textBox" title="Your number?" value="1" accesskey="N"><br>
+		<input type="number" id="textBox" title="Your number?" value="1"
+			accesskey="N"><br>
 
-		<input type="radio" id="to32bits" name="bits" checked>
+		<input type="radio" id="to32bits" name="bits" accesskey="S" checked>
 		<label for="to32bits">32-bit floating-point representation</label><br>
 
-		<input type="radio" id="to64bits" name="bits">
+		<input type="radio" id="to64bits" name="bits" accesskey="D" >
 		<label for="to64bits">64-bit floating-point representation</label><br>
 
-		<button type="button" onclick="convert()" accesskey="S">submit</button>
+		<button type="button" onclick="convert()" accesskey="C">convert</button>
 
 		<p id="result"></p>
 	</form>
@@ -123,3 +124,4 @@
 		}
 	</script>
 </body></html>
+
