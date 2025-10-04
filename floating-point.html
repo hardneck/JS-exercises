@@ -124,6 +124,12 @@
 
 		function convert() {
 			const n = Number(textBox.value);
+
+			if (Number.isNaN(n)) {
+				result.textContent = "NaN";
+				return;
+			}
+
 			if (to32bits.checked) {  // 32-bit representation
 				result.textContent = convertToFloat32(n);
 			}
