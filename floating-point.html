@@ -125,7 +125,7 @@
 		function convert() {
 			const n = Number(textBox.value);
 
-			if (Number.isNaN(n)) {
+			if (isNaN(n)) {
 				result.textContent = "NaN";
 				return;
 			}
@@ -140,4 +140,5 @@
 		result.textContent = "NaN";
 	</script>
 </body></html>
+
 
