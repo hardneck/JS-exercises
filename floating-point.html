@@ -7,7 +7,7 @@
 
 	<style>
 		body {
-			font-family: Arial, sans-serif;
+			font-family: sans-serif;
 			background-color: hsl(0, 0%, 95%);
 		}
 
@@ -126,7 +126,7 @@
 			const n = Number(textBox.value);
 
 			// show what's actually accepted
-			textBox.value = n;
+			textBox.value = String(n);
 
 			if (to32bits.checked) {  // 32-bit representation
 				result.textContent = convertToFloat32(n);
@@ -135,6 +135,5 @@
 				result.textContent = convertToFloat64(n);
 			}
 		}
-		result.textContent = "NaN";
 	</script>
 </body></html>
