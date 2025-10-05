@@ -15,8 +15,6 @@
 		let maxNum = 100;
 		let attempts = [];
 
-		var answer;
-
 		function isValid(n) {
 			if (minNum < n && n < maxNum) {
 				return true;
@@ -25,6 +23,8 @@
 				return false;
 			}
 		}
+
+		let answer;
 
 		while (true) {
 			answer = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
