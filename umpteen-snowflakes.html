@@ -84,6 +84,7 @@
 			const orderMax = 3;  // maximum order for resolution's sake
 
 			count = count + 1;  // keep trying
+
 			if (count % 100 == 0) notify();
 
 			const x = Math.floor(Math.random() * canvas.width);
@@ -119,7 +120,7 @@
 	</canvas>
 
 	<p id="result">You're getting snowflakes.</p>
-	<button id="func" accesskey="K">Click Me</button>
+	<input type="button" id="func" value="Click Me" accesskey="K">
 
 	<script>
 		// necessary initializations
@@ -148,11 +149,11 @@
 			funcExec = !funcExec;  // mimic the on/off effect
 			if (funcExec) {
 				interval = setInterval(drawIt, 100);
-				funcButton.innerHTML = "Pause";
+				funcButton.value = "Pause";
 			}
 			else {
 				clearInterval(interval);
-				funcButton.innerHTML = "Resume";
+				funcButton.value = "Resume";
 				notify();
 			}
 		}, true);
