@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Fun With Number Guessing</title>
-
 </head>
 
 <body>
@@ -16,12 +15,10 @@
 		let attempts = [];
 
 		function isValid(n) {
-			if (minNum < n && n < maxNum) {
+			if (minNum < n && n < maxNum)
 				return true;
-			}
-			else {
+			else
 				return false;
-			}
 		}
 
 		let answer;
@@ -29,9 +26,7 @@
 		while (true) {
 			answer = Math.floor(Math.random() * (maxNum - minNum + 1)) +
 				minNum;
-			if (isValid(answer)) {
-				break;
-			}
+			if (isValid(answer)) break;
 		}
 
 		while (true) {
