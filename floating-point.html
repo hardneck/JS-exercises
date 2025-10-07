@@ -46,7 +46,7 @@
 			font-size: 1.25em;
 		}
 
-		form > button {
+		form > #func {
 			margin-top: 15px;
 			color: hsl(0, 100%, 95%);
 			background-color: hsla(0, 100%, 50%, 0.75);
@@ -59,7 +59,7 @@
 			cursor: pointer;
 		}
 
-		form > button:hover {
+		form > #func:hover {
 			background-color: hsla(0, 100%, 50%, 1.0);
 		}
 
@@ -82,16 +82,15 @@
 		<input type="number" id="textBox" title="Your number?" value="1"
 			accesskey="N"><br>
 
-		<input type="radio" id="to32bits" name="bits" accesskey="T" checked>
-		<label for="to32bits">
+		<input type="radio" id="to32bit" name="bits" accesskey="T" checked>
+		<label for="to32bit">
 			32-bit floating-point representation</label><br>
 
-		<input type="radio" id="to64bits" name="bits" accesskey="S">
-		<label for="to64bits">
+		<input type="radio" id="to64bit" name="bits" accesskey="S">
+		<label for="to64bit">
 			64-bit floating-point representation</label><br>
 
-		<button type="button" onclick="convert()" accesskey="K">
-			convert</button>
+		<input type="button" id="func" value="convert" onclick="convert()" accesskey="K">
 
 		<p id="result">(click to convert)</p>
 	</form>
@@ -118,8 +117,7 @@
 		}
 
 		const textBox = document.getElementById("textBox");
-		const to32bits = document.getElementById("to32bits");
-		const to64bits = document.getElementById("to64bits");
+		const to32bit = document.getElementById("to32bit");
 		const result = document.getElementById("result");
 
 		function convert() {
@@ -128,7 +126,7 @@
 			// show what's actually accepted
 			textBox.value = String(n);
 
-			if (to32bits.checked) {  // 32-bit representation
+			if (to32bit.checked) {  // 32-bit representation
 				result.textContent = convertToFloat32(n);
 			}
 			else {                   // 64-bit representation
